@@ -36,28 +36,33 @@ public class GameLogic {
         }
     }
 
-    public void makeMove(int row, int col){
+    public boolean makeMove(int row, int col){
         if(!won) {
             if (currentGameState[row][col] == 0) {
                 currentGameState[row][col] = currentPlayer;
-                checkWin();
                 nextPlayer();
+                return true;
+            }else {
+                return false;
             }
         }
+        return false;
     }
 
-    private void checkWin(){
+    public boolean checkWin(){
         // Überprüfe Zeilen und Spalten
         for (int i = 0; i < 3; i++) {
             if (currentGameState[i][0] == currentGameState[i][1] && currentGameState[i][1] == currentGameState[i][2] && currentGameState[i][0] != 0) {
                 winner = currentGameState[i][0]; // Zeile i gewinnt
                 line = i;
                 won = true;
+                return true;
             }
             if (currentGameState[0][i] == currentGameState[1][i] && currentGameState[1][i] == currentGameState[2][i] && currentGameState[0][i] != 0) {
                 winner = currentGameState[0][i]; // Spalte i gewinnt
                 line = i + 3;
                 won = true;
+                return true;
             }
         }
 
@@ -66,12 +71,15 @@ public class GameLogic {
             winner = currentGameState[0][0]; // Hauptdiagonale gewinnt
             line = 6;
             won = true;
+            return true;
         }
         if (currentGameState[0][2] == currentGameState[1][1] && currentGameState[1][1] == currentGameState[2][0] && currentGameState[1][1] != 0) {
             winner = currentGameState[0][2]; // Nebendiagonale gewinnt
             line = 7;
             won = true;
+            return true;
         }
+        return false;
     }
 
     public int getCurrentPlayer() {
@@ -80,6 +88,10 @@ public class GameLogic {
 
     public int getWinner() {
         return winner;
+    }
+
+    public int getLine() {
+        return line;
     }
 
     private void printGameState(){
