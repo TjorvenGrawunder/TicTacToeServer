@@ -8,6 +8,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
         ctx.write(msg);
         ctx.flush();
+        System.out.println(msg.toString());
     }
 
     @Override
