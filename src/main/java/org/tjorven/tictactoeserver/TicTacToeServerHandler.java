@@ -7,10 +7,12 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
 
     TicTacToeServer server;
+    GameLogic game;
 
     public TicTacToeServerHandler(TicTacToeServer server) {
         super();
         this.server = server;
+        game = server.getGame();
     }
 
     @Override
@@ -26,8 +28,9 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
         //ctx.writeAndFlush(msg);
-        server.getClients().writeAndFlush(msg);
-        System.out.println(msg.toString());
+        String respond = parseMessage((String) msg);
+        server.getClients().writeAndFlush(respond);
+        //System.out.println(msg);
     }
 
 
@@ -37,6 +40,34 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
         // Close the connection when an exception is raised.
         cause.printStackTrace();
         ctx.close();
+    }
+
+    private String parseMessage(String msg){
+        String answer = "";
+        String[] msgParts = msg.split(",");
+
+        System.out.println(msgParts[1] + "," + msgParts[2]);
+
+        switch (msgParts[0]){
+            case "clickedOn":
+
+
+                game.makeMove(Integer.parseInt(msgParts[1]), Integer.parseInt(msgParts[2]));
+                boolean isWon = game.checkWin();
+                int nextPlayer = game.getCurrentPlayer();
+                int winner = 0;
+                int line = -1;
+                if(isWon){
+                    winner = game.getWinner();
+                    line = game.getLine();
+                }
+                answer = "draw," + msgParts[1] + "," + msgParts[2] + "," + isWon + "," + nextPlayer + "," + winner + "," + line;
+                break;
+            case "quit":
+                break;
+        }
+
+        return answer;
     }
 
 }

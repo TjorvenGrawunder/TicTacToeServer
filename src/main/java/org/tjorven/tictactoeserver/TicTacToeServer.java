@@ -7,13 +7,10 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TicTacToeServer {
     private GameLogic game;
@@ -32,7 +29,7 @@ public class TicTacToeServer {
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).childHandler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel channel) {
-                    channel.pipeline().addLast(new TicTacToeServerHandler(TicTacToeServer.this));
+                    channel.pipeline().addLast(new StringDecoder(), new StringEncoder(),new TicTacToeServerHandler(TicTacToeServer.this));
                 }
             }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, true);
 
@@ -59,5 +56,9 @@ public class TicTacToeServer {
 
     public ChannelGroup getClients() {
         return clientChannels;
+    }
+
+    public GameLogic getGame() {
+        return game;
     }
 }
