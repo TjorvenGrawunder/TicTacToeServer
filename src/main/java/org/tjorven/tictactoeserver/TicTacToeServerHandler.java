@@ -1,5 +1,6 @@
 package org.tjorven.tictactoeserver;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -28,8 +29,13 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
         //ctx.writeAndFlush(msg);
-        String respond = parseMessage((String) msg);
-        server.getClients().writeAndFlush(respond);
+        if(game.isWon()){
+            ((ByteBuf) msg).release();
+        }else {
+            String respond = parseMessage((String) msg);
+            server.getClients().writeAndFlush(respond);
+        }
+
         //System.out.println(msg);
     }
 

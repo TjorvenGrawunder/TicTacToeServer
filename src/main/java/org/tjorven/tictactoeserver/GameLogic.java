@@ -86,6 +86,10 @@ public class GameLogic {
         return currentPlayer;
     }
 
+    public boolean isWon(){
+        return this.won;
+    }
+
     public int getWinner() {
         return winner;
     }
