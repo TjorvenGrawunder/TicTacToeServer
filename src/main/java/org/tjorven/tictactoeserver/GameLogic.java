@@ -6,6 +6,7 @@ public class GameLogic {
 
     private int winner = 0;
     private boolean won = false;
+    private int newPlayer = 1;
 
     int line;
 
@@ -96,6 +97,14 @@ public class GameLogic {
 
     public int getLine() {
         return line;
+    }
+
+    public int getNewPlayer() {
+        return newPlayer;
+    }
+
+    public void setNewPlayer(int newPlayer) {
+        this.newPlayer = newPlayer;
     }
 
     private void printGameState(){

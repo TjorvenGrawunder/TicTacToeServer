@@ -19,6 +19,9 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         server.addClientChannel(ctx.channel());
+        int newPlayer = game.getNewPlayer();
+        ctx.writeAndFlush("setPlayer," + newPlayer);
+        game.setNewPlayer(newPlayer + 1);
     }
 
     @Override
@@ -57,19 +60,24 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
         switch (msgParts[0]){
             case "clickedOn":
 
-
-                game.makeMove(Integer.parseInt(msgParts[1]), Integer.parseInt(msgParts[2]));
-                boolean isWon = game.checkWin();
-                int nextPlayer = game.getCurrentPlayer();
-                int winner = 0;
-                int line = -1;
-                if(isWon){
-                    winner = game.getWinner();
-                    line = game.getLine();
+                if (Integer.parseInt(msgParts[3]) == game.getCurrentPlayer()) {
+                    game.makeMove(Integer.parseInt(msgParts[1]), Integer.parseInt(msgParts[2]));
+                    boolean isWon = game.checkWin();
+                    int nextPlayer = game.getCurrentPlayer();
+                    int winner = 0;
+                    int line = -1;
+                    if (isWon) {
+                        winner = game.getWinner();
+                        line = game.getLine();
+                    }
+                    answer = "draw," + msgParts[1] + "," + msgParts[2] + "," + isWon + "," + nextPlayer + "," + winner + "," + line;
                 }
-                answer = "draw," + msgParts[1] + "," + msgParts[2] + "," + isWon + "," + nextPlayer + "," + winner + "," + line;
                 break;
             case "quit":
+                //TO-DO
+                System.out.println("Player quit");
+                break;
+            default:
                 break;
         }
 
