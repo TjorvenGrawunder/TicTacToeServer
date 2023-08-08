@@ -7,8 +7,9 @@ public class GameLogic {
     private int winner = 0;
     private boolean won = false;
     private int newPlayer = 1;
+    private int turns = 0;
 
-    int line;
+    private int line = -1;
 
     public GameLogic(){
         init();
@@ -41,6 +42,7 @@ public class GameLogic {
         if(!won) {
             if (currentGameState[row][col] == 0) {
                 currentGameState[row][col] = currentPlayer;
+                turns++;
                 nextPlayer();
                 return true;
             }else {
@@ -77,6 +79,10 @@ public class GameLogic {
         if (currentGameState[0][2] == currentGameState[1][1] && currentGameState[1][1] == currentGameState[2][0] && currentGameState[1][1] != 0) {
             winner = currentGameState[0][2]; // Nebendiagonale gewinnt
             line = 7;
+            won = true;
+            return true;
+        }
+        if(turns == 9){
             won = true;
             return true;
         }

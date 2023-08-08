@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fa88921-c8d3-4e81-92c4-eded43e7270f" name="Changes" comment="prints out Message Object (just to see that something happens)">
+    <list default="true" id="4fa88921-c8d3-4e81-92c4-eded43e7270f" name="Changes" comment="Only Moves from current Player allowed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690891841154</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Only Moves from current Player allowed">
+      <created>1691500454360</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691500454360</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +106,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ChannelGroup for every Channel. Server sends Respond to every connected Client." />
-    <option name="LAST_COMMIT_MESSAGE" value="ChannelGroup for every Channel. Server sends Respond to every connected Client." />
+    <MESSAGE value="Only Moves from current Player allowed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Only Moves from current Player allowed" />
   </component>
 </project>
