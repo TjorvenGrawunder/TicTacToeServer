@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fa88921-c8d3-4e81-92c4-eded43e7270f" name="Changes" comment="Only Moves from current Player allowed">
+    <list default="true" id="4fa88921-c8d3-4e81-92c4-eded43e7270f" name="Changes" comment="Release msg when game is already won">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +73,7 @@
       <workItem from="1690888251134" duration="1977000" />
       <workItem from="1690895870284" duration="2497000" />
       <workItem from="1691494010772" duration="2972000" />
+      <workItem from="1691583926439" duration="1232000" />
     </task>
     <task id="LOCAL-00001" summary="ChannelGroup for every Channel. Server sends Respond to every connected Client.">
       <created>1690891841154</created>

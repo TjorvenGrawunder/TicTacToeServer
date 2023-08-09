@@ -4,12 +4,12 @@ public class GameLogic {
     private int[][] currentGameState = new int[3][3];
     private int currentPlayer;
 
-    private int winner = 0;
-    private boolean won = false;
+    private int winner;
+    private boolean won;
     private int newPlayer = 1;
-    private int turns = 0;
+    private int turns;
 
-    private int line = -1;
+    private int line;
 
     public GameLogic(){
         init();
@@ -22,6 +22,14 @@ public class GameLogic {
             }
         }
         currentPlayer = 1;
+        turns = 0;
+        line = -1;
+        winner = 0;
+        won = false;
+    }
+
+    public void restart(){
+        init();
     }
 
     public void nextPlayer(){

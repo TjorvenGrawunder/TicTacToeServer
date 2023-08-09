@@ -55,7 +55,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
         String answer = "";
         String[] msgParts = msg.split(",");
 
-        System.out.println(msgParts[1] + "," + msgParts[2]);
+        //System.out.println(msgParts[1] + "," + msgParts[2]);
 
         switch (msgParts[0]){
             case "clickedOn":
@@ -76,6 +76,11 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
             case "quit":
                 //TO-DO
                 System.out.println("Player quit");
+                break;
+            case "restart":
+                System.out.println("Restarting Game!");
+                game.restart();
+                answer = "restart";
                 break;
             default:
                 break;
