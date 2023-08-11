@@ -27,6 +27,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         server.removeClientChannel(ctx.channel());
+        System.out.println("Disconnect from Player: " + ctx.name());
     }
 
     @Override
@@ -41,6 +42,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
 
         //System.out.println(msg);
     }
+
 
 
 
