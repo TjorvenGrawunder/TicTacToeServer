@@ -19,9 +19,6 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         server.addClientChannel(ctx.channel());
-        int newPlayer = game.getNewPlayer();
-        ctx.writeAndFlush("setPlayer," + newPlayer);
-        game.setNewPlayer(newPlayer + 1);
     }
 
     @Override
@@ -33,12 +30,15 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
         //ctx.writeAndFlush(msg);
-        if(game.isWon()){
-            ((ByteBuf) msg).release();
+
+        String respond = parseMessage((String) msg);
+        String[] split = respond.split(",");
+        if(split[0].equals("setPlayer")){
+            ctx.writeAndFlush(respond);
         }else {
-            String respond = parseMessage((String) msg);
             server.getClients().writeAndFlush(respond);
         }
+
 
         //System.out.println(msg);
     }
@@ -55,6 +55,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
 
     private String parseMessage(String msg){
         String answer = "";
+        System.out.println(msg);
         String[] msgParts = msg.split(",");
 
         //System.out.println(msgParts[1] + "," + msgParts[2]);
@@ -62,7 +63,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
         switch (msgParts[0]){
             case "clickedOn":
 
-                if (Integer.parseInt(msgParts[3]) == game.getCurrentPlayer()) {
+                if (Integer.parseInt(msgParts[3]) == game.getCurrentPlayer() && !game.isWon()) {
                     game.makeMove(Integer.parseInt(msgParts[1]), Integer.parseInt(msgParts[2]));
                     boolean isWon = game.checkWin();
                     int nextPlayer = game.getCurrentPlayer();
@@ -73,6 +74,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
                         line = game.getLine();
                     }
                     answer = "draw," + msgParts[1] + "," + msgParts[2] + "," + isWon + "," + nextPlayer + "," + winner + "," + line;
+                    System.out.println(answer);
                 }
                 break;
             case "quit":
@@ -83,6 +85,11 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
                 System.out.println("Restarting Game!");
                 game.restart();
                 answer = "restart";
+                break;
+            case "playerRequest":
+                int newPlayer = game.getNewPlayer();
+                answer = "setPlayer," + newPlayer;
+                game.setNewPlayer(newPlayer + 1);
                 break;
             default:
                 break;
