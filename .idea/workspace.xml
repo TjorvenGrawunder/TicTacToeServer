@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fa88921-c8d3-4e81-92c4-eded43e7270f" name="Changes" comment="Release msg when game is already won">
+    <list default="true" id="4fa88921-c8d3-4e81-92c4-eded43e7270f" name="Changes" comment="Added Player Request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/tjorven/tictactoeserver/TicTacToeServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +74,14 @@
       <workItem from="1690888251134" duration="1977000" />
       <workItem from="1690895870284" duration="2497000" />
       <workItem from="1691494010772" duration="2972000" />
-      <workItem from="1691583926439" duration="1232000" />
+      <workItem from="1691583926439" duration="1522000" />
+      <workItem from="1691604813137" duration="379000" />
+      <workItem from="1691751497398" duration="1274000" />
+      <workItem from="1692272307997" duration="2056000" />
+      <workItem from="1692283784051" duration="24000" />
+      <workItem from="1692609404047" duration="11342000" />
+      <workItem from="1692880094241" duration="12000" />
+      <workItem from="1692971728490" duration="1956000" />
     </task>
     <task id="LOCAL-00001" summary="ChannelGroup for every Channel. Server sends Respond to every connected Client.">
       <created>1690891841154</created>
@@ -89,7 +97,35 @@
       <option name="project" value="LOCAL" />
       <updated>1691500454360</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added parser for restart cmd">
+      <created>1691585430328</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1691585430328</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Test Message for channelInactive()">
+      <created>1691752839478</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1691752839478</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Änderung rückgängig gemacht">
+      <created>1692273373228</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692273373228</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Player Request">
+      <created>1692868144156</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692868144156</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +145,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ChannelGroup for every Channel. Server sends Respond to every connected Client." />
     <MESSAGE value="Only Moves from current Player allowed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Only Moves from current Player allowed" />
+    <MESSAGE value="Added parser for restart cmd" />
+    <MESSAGE value="Added Test Message for channelInactive()" />
+    <MESSAGE value="Änderung rückgängig gemacht" />
+    <MESSAGE value="Added Player Request" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Player Request" />
   </component>
 </project>

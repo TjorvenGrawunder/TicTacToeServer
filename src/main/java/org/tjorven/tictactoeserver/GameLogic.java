@@ -46,18 +46,14 @@ public class GameLogic {
         }
     }
 
-    public boolean makeMove(int row, int col){
+    public void makeMove(int row, int col){
         if(!won) {
             if (currentGameState[row][col] == 0) {
                 currentGameState[row][col] = currentPlayer;
                 turns++;
                 nextPlayer();
-                return true;
-            }else {
-                return false;
             }
         }
-        return false;
     }
 
     public boolean checkWin(){

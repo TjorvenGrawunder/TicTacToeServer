@@ -63,19 +63,7 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
         switch (msgParts[0]){
             case "clickedOn":
 
-                if (Integer.parseInt(msgParts[3]) == game.getCurrentPlayer() && !game.isWon()) {
-                    game.makeMove(Integer.parseInt(msgParts[1]), Integer.parseInt(msgParts[2]));
-                    boolean isWon = game.checkWin();
-                    int nextPlayer = game.getCurrentPlayer();
-                    int winner = 0;
-                    int line = -1;
-                    if (isWon) {
-                        winner = game.getWinner();
-                        line = game.getLine();
-                    }
-                    answer = "draw," + msgParts[1] + "," + msgParts[2] + "," + isWon + "," + nextPlayer + "," + winner + "," + line;
-                    System.out.println(answer);
-                }
+                answer = handleClickedOn(answer, msgParts);
                 break;
             case "quit":
                 //TO-DO
@@ -95,6 +83,23 @@ public class TicTacToeServerHandler extends ChannelInboundHandlerAdapter {
                 break;
         }
 
+        return answer;
+    }
+
+    private String handleClickedOn(String answer, String[] msgParts) {
+        if (Integer.parseInt(msgParts[3]) == game.getCurrentPlayer() && !game.isWon()) {
+            game.makeMove(Integer.parseInt(msgParts[1]), Integer.parseInt(msgParts[2]));
+            boolean isWon = game.checkWin();
+            int nextPlayer = game.getCurrentPlayer();
+            int winner = 0;
+            int line = -1;
+            if (isWon) {
+                winner = game.getWinner();
+                line = game.getLine();
+            }
+            answer = "draw," + msgParts[1] + "," + msgParts[2] + "," + isWon + "," + nextPlayer + "," + winner + "," + line;
+            System.out.println(answer);
+        }
         return answer;
     }
 

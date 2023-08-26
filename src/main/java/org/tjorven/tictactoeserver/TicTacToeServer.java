@@ -16,7 +16,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 
 public class TicTacToeServer {
     private GameLogic game;
-    private ChannelGroup clientChannels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    private final ChannelGroup clientChannels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     int port;
     public TicTacToeServer(int port){
         game = new GameLogic();
